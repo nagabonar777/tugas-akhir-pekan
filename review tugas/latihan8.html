@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB DILARANG CASHBONS </title>
+    <style>
+        *{
+            font-family: Calibri;
+        }
+        table{
+            width: 100%;
+        }
+        table, tr, td, th{
+            border: 1px solid black;
+            border-collapse: collapse;
+            
+        }
+        .btn{
+            background-color: rgb(93, 238, 93);
+            width: 120px;
+            height: 60px;
+            font-size: 20px;
+            position: relative;
+            
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 style="text-align: center;">KASIR</h1>
+        <form name="kasir">
+            <table cellpadding="14">
+                <tr style="text-align: center;">
+                    <th style="width: 30px;">No</th>
+                    <td>Nama</td>
+                    <td>Jumlah Tiket</td>
+                    <td>Harga</td>
+                </tr>
+                <tr>
+                    <td>1.</td>
+                    <td>Bukit bintang</td>
+                    <td><input type="number" name="numstng" id="numstng" min="0" value="0" onchange="autocount()" onkeyup="autocount()"></td>
+                    <td>Rp 10000</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td>Pantai sadranan</td>
+                    <td><input type="number" name="numstr" id="numstr" min="0" value="0" onchange="autocount()" onkeyup="autocount()"></td>
+                    <td>Rp 15000</td>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td>Candi borobudur</td>
+                    <td><input type="number" name="numstu" id="numstu" min="0" value="0" onchange="autocount()" onkeyup="autocount()"></td>
+                    <td>Rp 50000</td>
+                </tr>
+                <tr>
+                    <td>4.</td>
+                    <td>Candi prambanan</td>
+                    <td><input type="number" name="numsty" id="numsty" min="0" value="0" onchange="autocount()" onkeyup="autocount()"></td>
+                    <td>Rp 50000</td>
+                </tr>
+                <tr>
+                    <td>5.</td>
+                    <td>Keraton yogyakarta</td>
+                    <td><input type="number" name="numstd" id="numstd" min="0" value="0" onchange="autocount()" onkeyup="autocount()"></td>
+                    <td>Rp 5.000</td>
+                </tr>
+                <tr>
+                    <td>6.</td>
+                    <td>Malioboro</td>
+                    <td><input type="number" name="numstb" id="numstb" min="0" value="0" onchange="autocount()" onkeyup="autocount()"></td>
+                    <td>Rp 5.000</td>
+                </tr>
+
+            </table>
+            <br><br><br>
+            <table cellpadding="16">
+                <tr>
+                    <th colspan="3">Pembayaran</th>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>Bayar</td>
+                    <td>Kembalian</td>
+                </tr>
+                <tr>
+                    <td id="total">Rp -</td>
+                    <td><input type='number' min='0' value='0' id='bayar'></td>
+                    <td id="kembalian">Rp -</td>
+                </tr>   
+            </table>
+            <input type="button" value="Hitung" class="btn" id="btn">
+            <input type="reset" value="Clear" name="mreset" class="btn">
+        </form>
+    </div>
+    <script>
+    document.getElementById('btn').addEventListener(`click`, ()=>{
+        if(!(parseInt(document.getElementById('bayar').value) < (10000 * parseInt(kasir.numstng.value)) + (15000 * parseInt(kasir.numstr.value)) + (50000 * parseInt(kasir.numstu.value))
+        + (50000 * parseInt(kasir.numsty.value)) + (5.000 * parseInt(kasir.numstd.value))
+        + (5.000 * parseInt(kasir.numstb.value)))){
+            document.getElementById("total").innerHTML = (`Rp ${
+                (10000 * parseInt(kasir.numstng.value)) +
+                (15000 * parseInt(kasir.numstr.value)) +
+                (50000 * parseInt(kasir.numstu.value)) +
+                (50000 * parseInt(kasir.numsty.value)) +
+                (5.000 * parseInt(kasir.numstd.value)) +
+                (5.000 * parseInt(kasir.numstb.value))
+            }`);
+
+            document.getElementById('kembalian').innerHTML = (`Rp ${
+                parseInt(document.getElementById('bayar').value) -
+                (10000 * parseInt(kasir.numstng.value)) +
+                (15000 * parseInt(kasir.numstr.value)) +
+                (50000 * parseInt(kasir.numstu.value)) +
+                (50000 * parseInt(kasir.numsty.value)) +
+                (5.000 * parseInt(kasir.numstd.value)) +
+                (5.000 * parseInt(kasir.numstb.value))
+            }`);
+        }
+        else {
+            window.alert("Uang pembayaran tidak cukup.");
+        }
+    });
+
+    function autocount(){
+        document.getElementById("total").innerHTML = (`Rp ${
+            (10000 * parseInt(kasir.numstng.value)) +
+            (15000 * parseInt(kasir.numstr.value)) +
+            (50000 * parseInt(kasir.numstu.value)) +
+            (50000 * parseInt(kasir.numsty.value)) +
+            (5.000 * parseInt(kasir.numstd.value)) +
+            (5.000 * parseInt(kasir.numstr.value))
+        }`);
+    }
+
+    kasir.mreset.addEventListener("click", ()=>{
+        document.getElementById('total').innerHTML = "Rp -";
+        document.getElementById('kembalian').innerHTML = "Rp -";
+    }); 
+</script>
+
+
+
+</body>
+</html>
